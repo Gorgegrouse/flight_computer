@@ -4,7 +4,7 @@
 
 #include <libusb.h>
 
-int main() {
+[[noreturn]] int main() {
     enum class ComputerStatus {
         FULLY_FUNCTIONING,
         SENSOR_ERROR,
@@ -12,5 +12,9 @@ int main() {
     };
     libusb_context *context = nullptr;
 
+    //main loop for running the 
+    while (true) {
+        
+    }
     
 }
