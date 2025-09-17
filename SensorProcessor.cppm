@@ -12,8 +12,10 @@ export module SensorModule:SensorProcessor;
 import :Sensor;
 namespace flight_computer {
     // using SensorStatus::
-    export void sensor_processor(Sensor &sensor, const std::string_view &&filename) {
-        ofstream data_file(std::forward<const std::string_view>(filename));
+    export template<unsigned NumberOfPinsInSensor>
+    void sensor_processor(Sensor<NumberOfPinsInSensor> &sensor, const std::string_view &&filename) {
+        std::ofstream data_file(std::forward<const std::string_view>(filename));
+        sensor.Recieve_Data();
     }
 }
 
