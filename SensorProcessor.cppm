@@ -11,8 +11,8 @@ export module SensorProcessor;
 import Sensor;
 namespace flight_computer {
     // using SensorStatus::
-    export void SensorProcessor(auto &Sensor) {
-        sens
-    }
+    // export void SensorProcessor(Sensor &sensor) {
+    //     
+    // }
 }
 

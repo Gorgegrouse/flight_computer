@@ -6,19 +6,19 @@
 //
 
 module;
-#include <wiringPy.h>
+// #include <wiringPy.h>
 #include <array>
 export module Sensor;
 
 namespace flight_computer {
     
-    export template<size_t NumberOfPins>
+    export template<unsigned NumberOfPins>
     class Sensor {
         using pin_array = std::array<int, NumberOfPins>;
     public:
     explicit Sensor(pin_array &&pins)
         : _pin_indicies{std::forward<pin_array>(pins)} {}
-        Get_Data_From_Pins
+        // Get_Data_From_Pins
         
     private:
         pin_array _pin_indicies;

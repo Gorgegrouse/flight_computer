@@ -9,9 +9,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Target Definitions
 # ===========================================================
 
-add_executable(Rocketry_Club_Flight_Computer main.cpp
-    SensorProcessor.cppm
-    PinMapper.cppm)
+add_executable(Rocketry_Club_Flight_Computer main.cpp)
  
 #configure c++ modules
 add_library(Sensor)
