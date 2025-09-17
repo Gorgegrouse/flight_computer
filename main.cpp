@@ -3,7 +3,12 @@
 //Communications and Payloads Team
 
 #include <array>
+#include <thread>
 #include <libusb.h>
+
+import SensorProcessor;
+import Sensor;
+import PinMapper;
 
 [[noreturn]] int main() {
     enum class ComputerStatus {
@@ -15,7 +20,19 @@
 
     constexpr unsigned number_of_pins_on_raspberry_pi = 40u;
 
-    std::array<int, number_of_pins_on_raspberry_pi> pin_mapping; 
+    //initialize sensors
+    
+
+    //process sensors in parallel
+    {
+        using std::jthread;
+        using flight_computer::sensor_processor;
+        jthread accelerator_processor(sensor_processor,  );
+
+        
+    }
+
+    std::array<int, number_of_pins_on_raspberry_pi> pin_mapping{}; 
     //main loop for running the 
     while (true) {
         
