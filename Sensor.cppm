@@ -17,8 +17,8 @@ namespace flight_computer {
         using pin_array = std::array<int, NumberOfPins>;
     public:
     Sensor(pin_array &&pins)
-        : _pin_indicies{std::forward<pin_array>(pins)}
-
+        : _pin_indicies{std::forward<pin_array>(pins)} {}
+        Get_Data_From_Pins
         
     private:
         pin_array _pin_indicies;

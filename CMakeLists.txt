@@ -10,7 +10,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # ===========================================================
 
 add_executable(Rocketry_Club_Flight_Computer main.cpp
-    SensorProcessor.cppm)
+    SensorProcessor.cppm
+    PInMapper.cppm)
 
 # Common libraries
 # target_link_libraries(Rocketry_Club_Flight_Computer PRIVATE TBB::tbb)
