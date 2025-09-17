@@ -11,7 +11,25 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(Rocketry_Club_Flight_Computer main.cpp
     SensorProcessor.cppm
-    PInMapper.cppm)
+    PinMapper.cppm)
+ 
+#configure c++ modules
+add_library(Sensor)
+target_sources(Sensor PUBLIC FILE_SET CXX_MODULES FILES Sensor.cppm)
+target_link_libraries(Rocketry_Club_Flight_Computer PRIVATE Sensor)
+
+add_library(SensorProcessor)
+target_sources(SensorProcessor PUBLIC FILE_SET CXX_MODULES FILES SensorProcessor.cppm)
+target_link_libraries(Rocketry_Club_Flight_Computer PRIVATE SensorProcessor)
+#dependency
+target_link_libraries(SensorProcessor PRIVATE Sensor)
+
+add_library(PinMapper)
+target_sources(PinMapper PUBLIC FILE_SET CXX_MODULES FILES PinMapper.cppm)
+target_link_libraries(Rocketry_Club_Flight_Computer PRIVATE PinMapper)
+
+target_link_libraries(PinMapper PRIVATE Sensor)
+
 
 # Common libraries
 # target_link_libraries(Rocketry_Club_Flight_Computer PRIVATE TBB::tbb)
