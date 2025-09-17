@@ -12,11 +12,16 @@ import SensorModule;
 // import PinMapper;
 
 [[noreturn]] int main() {
-    enum class ComputerStatus {
+    enum class SensorStatus {
         FULLY_FUNCTIONING,
         SENSOR_ERROR,
         TRANSMITER_ERROR
     };
+
+    //setup raspberry pi pins
+    wiringPiSetupGpio();
+
+    
     libusb_context *context = nullptr;
 
     constexpr unsigned number_of_pins_on_raspberry_pi = 40u;
@@ -33,7 +38,7 @@ import SensorModule;
         
     }
 
-    std::array<int, number_of_pins_on_raspberry_pi> pin_mapping{}; 
+    std::array<int, number_of_pins_on_raspberry_pi> pin_mapping{};
     //main loop for running the 
     while (true) {
         
