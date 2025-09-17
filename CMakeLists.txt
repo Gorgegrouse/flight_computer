@@ -3,12 +3,14 @@ project(Rocketry_Club_Flight_Computer)
 
 set(CMAKE_CXX_STANDARD 26)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+#set(CMAKE_CXX_SCAN_FOR)
 
 # ===========================================================
 # Target Definitions
 # ===========================================================
 
-add_executable(Rocketry_Club_Flight_Computer main.cpp)
+add_executable(Rocketry_Club_Flight_Computer main.cpp
+    SensorProcessor.cppm)
 
 # Common libraries
 # target_link_libraries(Rocketry_Club_Flight_Computer PRIVATE TBB::tbb)
