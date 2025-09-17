@@ -15,7 +15,7 @@ namespace flight_computer {
     export template<unsigned NumberOfPinsInSensor>
     void sensor_processor(Sensor<NumberOfPinsInSensor> &sensor, const std::string_view &&filename) {
         std::ofstream data_file(std::forward<const std::string_view>(filename));
-        sensor.Recieve_Data();
+        sensor.Receive_Data();
     }
 }
 

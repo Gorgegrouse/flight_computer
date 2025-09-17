@@ -6,9 +6,10 @@
 #include <thread>
 #include <libusb.h>
 
-import SensorProcessor;
-import Sensor;
-import PinMapper;
+import SensorModule;
+// import SensorProcessor;
+// import Sensor;
+// import PinMapper;
 
 [[noreturn]] int main() {
     enum class ComputerStatus {
@@ -27,7 +28,7 @@ import PinMapper;
     {
         using std::jthread;
         using flight_computer::sensor_processor;
-        jthread accelerator_processor(sensor_processor,  );
+        // jthread accelerator_processor(sensor_processor,  );
 
         
     }
