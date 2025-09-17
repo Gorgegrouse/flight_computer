@@ -4,8 +4,8 @@
 
 module;
 #include <ranges>
-export module PinMapper;
-import Sensor;
+export module SensorModule:PinMapper;
+import SensorModule:Sensor;
 namespace flight_computer {
     export template <size_t TotalNumberOfPinsOnRaspberryPi>
     class PinMapper {

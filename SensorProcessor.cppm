@@ -7,13 +7,13 @@
 
 module;
 #include <string_view>
-#include <>
-export module SensorProcessor;
-import Sensor;
+#include <fstream>
+export module SensorModule:SensorProcessor;
+import :Sensor;
 namespace flight_computer {
     // using SensorStatus::
-    export void sensor_processor(Sensor &sensor, std::string_view &&filename) {
-        flight_computer
+    export void sensor_processor(Sensor &sensor, const std::string_view &&filename) {
+        ofstream data_file(std::forward<const std::string_view>(filename));
     }
 }
 

@@ -8,7 +8,7 @@
 module;
 // #include <wiringPy.h>
 #include <array>
-export module Sensor;
+export module SensorModule:Sensor;
 
 namespace flight_computer {
     
