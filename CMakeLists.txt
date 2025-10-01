@@ -38,9 +38,12 @@ target_link_libraries(Rocketry_Club_Flight_Computer PRIVATE SensorModule)
 #Packages
 
 find_package(PkgConfig REQUIRED)
+pkg_check_modules(GPIOD_CXX REQUIRED libgpiodcxx)
 pkg_check_modules(libusb REQUIRED IMPORTED_TARGET libusb-1.0)
 target_link_libraries(Rocketry_Club_Flight_Computer PRIVATE PkgConfig::libusb)
 
+target_include_directories(Rocketry_Club_Flight_Computer PRIVATE ${GPIOD_CXX_INCLUDE_DIRS})
+target_link_libraries(Rocketry_Club_Flight_Computer PRIVATE ${GPIOD_CXX_LIBRARIES})
 # CLion/Arch Linux specific: Use Ninja for faster builds
 set(CMAKE_GENERATOR "Ninja" CACHE INTERNAL "Force Ninja generator")
 #for raspberry pi 1
