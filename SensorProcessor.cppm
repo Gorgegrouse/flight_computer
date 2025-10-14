@@ -6,13 +6,16 @@
 // to be consumed in conjunction with a std::jthread
 
 module;
-
-export module SensorProcessor;
-import Sensor;
+#include <string_view>
+#include <fstream>
+export module SensorModule:SensorProcessor;
+import :Sensor;
 namespace flight_computer {
     // using SensorStatus::
-    // export void SensorProcessor(Sensor &sensor) {
-    //     
-    // }
+    export template<unsigned NumberOfPinsInSensor>
+    void sensor_processor(Sensor<NumberOfPinsInSensor> &sensor, const std::string_view &&filename) {
+        std::ofstream data_file(std::forward<const std::string_view>(filename));
+        sensor.Receive_Data();
+    }
 }
 

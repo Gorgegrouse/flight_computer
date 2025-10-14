@@ -8,10 +8,11 @@
 module;
 // #include <wiringPy.h>
 #include <array>
-export module Sensor;
+export module SensorModule:Sensor;
 
 namespace flight_computer {
-    
+    //placeholder for the real data packet format
+    using DataFormat = double;
     export template<unsigned NumberOfPins>
     class Sensor {
         using pin_array = std::array<int, NumberOfPins>;
@@ -19,7 +20,9 @@ namespace flight_computer {
     explicit Sensor(pin_array &&pins)
         : _pin_indicies{std::forward<pin_array>(pins)} {}
         // Get_Data_From_Pins
-        
+        DataFormat Get_Data_From_Sensor() {
+            
+        }
     private:
         pin_array _pin_indicies;
     };

@@ -1,10 +1,11 @@
 //
 // Created by Ivan Hargesheimer on 9/17/25.
 //
+
 module;
 #include <ranges>
-export module PinMapper;
-import Sensor;
+export module SensorModule:PinMapper;
+import :Sensor;
 namespace flight_computer {
     export template <size_t TotalNumberOfPinsOnRaspberryPi>
     class PinMapper {

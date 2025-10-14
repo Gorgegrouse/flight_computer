@@ -11,22 +11,25 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(Rocketry_Club_Flight_Computer main.cpp)
  
-#configure c++ modules
-add_library(Sensor)
-target_sources(Sensor PUBLIC FILE_SET CXX_MODULES FILES Sensor.cppm)
-target_link_libraries(Rocketry_Club_Flight_Computer PRIVATE Sensor)
-
-add_library(SensorProcessor)
-target_sources(SensorProcessor PUBLIC FILE_SET CXX_MODULES FILES SensorProcessor.cppm)
-target_link_libraries(Rocketry_Club_Flight_Computer PRIVATE SensorProcessor)
-#dependency
-target_link_libraries(SensorProcessor PRIVATE Sensor)
-
-add_library(PinMapper)
-target_sources(PinMapper PUBLIC FILE_SET CXX_MODULES FILES PinMapper.cppm)
-target_link_libraries(Rocketry_Club_Flight_Computer PRIVATE PinMapper)
-
-target_link_libraries(PinMapper PRIVATE Sensor)
+add_library(SensorModule)
+target_sources(SensorModule PUBLIC FILE_SET CXX_MODULES FILES SensorModule.cppm SensorProcessor.cppm Sensor.cppm PinMapper.cppm)
+target_link_libraries(Rocketry_Club_Flight_Computer PRIVATE SensorModule)
+##configure c++ modules
+#add_library(Sensor)
+#target_sources(Sensor PUBLIC FILE_SET CXX_MODULES FILES Sensor.cppm)
+#target_link_libraries(Rocketry_Club_Flight_Computer PRIVATE Sensor)
+#
+#add_library(SensorProcessor)
+#target_sources(SensorProcessor PUBLIC FILE_SET CXX_MODULES FILES SensorProcessor.cppm)
+#target_link_libraries(Rocketry_Club_Flight_Computer PRIVATE SensorProcessor)
+##dependency
+#target_link_libraries(SensorProcessor PRIVATE Sensor)
+#
+#add_library(PinMapper)
+#target_sources(PinMapper PUBLIC FILE_SET CXX_MODULES FILES PinMapper.cppm)
+#target_link_libraries(Rocketry_Club_Flight_Computer PRIVATE PinMapper)
+#
+#target_link_libraries(PinMapper PRIVATE Sensor)
 
 
 # Common libraries
@@ -35,9 +38,12 @@ target_link_libraries(PinMapper PRIVATE Sensor)
 #Packages
 
 find_package(PkgConfig REQUIRED)
+pkg_check_modules(GPIOD_CXX REQUIRED libgpiodcxx)
 pkg_check_modules(libusb REQUIRED IMPORTED_TARGET libusb-1.0)
 target_link_libraries(Rocketry_Club_Flight_Computer PRIVATE PkgConfig::libusb)
 
+target_include_directories(Rocketry_Club_Flight_Computer PRIVATE ${GPIOD_CXX_INCLUDE_DIRS})
+target_link_libraries(Rocketry_Club_Flight_Computer PRIVATE ${GPIOD_CXX_LIBRARIES})
 # CLion/Arch Linux specific: Use Ninja for faster builds
 set(CMAKE_GENERATOR "Ninja" CACHE INTERNAL "Force Ninja generator")
 #for raspberry pi 1
